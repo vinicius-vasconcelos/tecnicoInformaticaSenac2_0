@@ -1,0 +1,94 @@
+body, html { height: 100vh; font-family: 'Open Sans', sans-serif !important;}
+
+a {text-decoration: none; color: #FFF;}
+
+h1.titulo {
+    margin: 15px auto;
+    color: #000;
+}
+
+.flex-wrap {flex-wrap: wrap;}
+
+.flex-hor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.flex-hor-item {
+    flex: 1 1 100%;
+    height: 10vh;
+}
+
+div.flex-hor-item + div.flex-hor-item {border-left: 1px solid #FFF;}
+
+.flex-ver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*------- INDEX*/
+.btEntrar {
+    width: 90%;
+    height: 3em;
+    margin: 30px auto;
+    background-color: #4B946A;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btEntrar a {display: block;}
+
+/*------- TELA2*/
+
+.header, .footer {
+    width: 100%;
+    height: 10vh;
+    background-color: #2c3e50;
+    position: fixed;
+}
+
+.header.flex-hor {justify-content: flex-start;}
+.header a {margin-left: 10px;}
+
+.btn-radius {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #FFF;
+    border-radius: 50%;
+}
+
+.header {top:0;}
+.footer {bottom: 0;}
+
+.main {
+    width: 100%;
+    height: auto;
+    margin: 10vh auto;
+    padding: 10px;
+}
+
+.main p + p {margin-top: 10px;}
+
+.main p { margin-left: 15px; margin-right: 15px;}
+
+/*------- MAPA*/
+.mapa, .mapa iframe {
+    width: 95%;
+    height: 65vh;
+    border-radius: 5px;
+}
+
+/*------- VÍDEO*/
+.video, .video iframe{ 
+    flex: 0 1 40%;
+    margin: 5px; 
+    border: none !important;
+}
