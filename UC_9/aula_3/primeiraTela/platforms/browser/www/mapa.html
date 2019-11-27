@@ -15,6 +15,7 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/myStyle.css" />
+    <link rel="stylesheet" href="fontAwsome/css/all.min.css">
 
     <title>Bem vindo</title>
 </head>
@@ -22,8 +23,9 @@
 <body>
     <div class="flex-container">
         <div class="header flex-hor">
-            <a class="btn-radius flex-hor" href="javascript:history.back()">
-                <p>V</p>
+            <a class="flex-hor" href="javascript:history.back()">
+                <i class="fas fa-chevron-left fa-lg"></i>
+                <i onclick="window.Location.href='tela2.html'" class="fas fa-home fa-lg"></i>
             </a>
         </div>
         <div class="main flex-ver">
@@ -35,15 +37,9 @@
             </div>
         </div>
         <div class="footer flex-hor">
-            <div class="flex-hor-item flex-ver"><a class="btn-radius flex-hor" href="mapa.html">
-                    <p>M</p>
-                </a></div>
-            <div class="flex-hor-item flex-ver"><a class="btn-radius flex-hor" href="video.html">
-                    <p>V</p>
-                </a></div>
-            <div class="flex-hor-item flex-ver"><a class="btn-radius flex-hor" href="clima.html">
-                    <p>C</p>
-                </a></div>
+            <div class="flex-hor-item flex-ver"><a class="flex-hor" href="mapa.html"><i class="fas fa-map-marker-alt fa-lg"></i></a></div>
+            <div class="flex-hor-item flex-ver"><a class="flex-hor" href="video.html"><i class="fas fa-video fa-lg"></i></a></div>
+            <div class="flex-hor-item flex-ver"><a class="flex-hor" href="clima.html"><i class="fas fa-cloud-sun-rain fa-lg"></i></a></div>
         </div>
     </div>
 
