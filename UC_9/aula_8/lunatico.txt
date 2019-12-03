@@ -1,0 +1,35 @@
+Nome da empresa: Jobo's.
+Nome do aplicativo: Make Robot.
+Descrição: Você pode montar e comprar seu robo 
+com  infinitas possibilidades
+(configurações, materiais e especificações).
+
+Objetivo: Facilitar a compra de peças de robos e sua 
+montagem.
+
+
+-----------------------------------------------------------------------------
+Finalidade: Robo jardineiro, Robo faixineiro,
+Robo médico, Robo mecânico.
+
+configurações: computacionais, desempenho, capacidades.
+
+Caracteristicas físicas: Voz (masculino, feminino, sem voz), cor, Tamanho, peso.
+
+caracteristicas intectuais: nivel de inteligencia.
+
+Material: Adamantio, Aluminio, Ferro, Fibra.
+
+Partes específicas do corpo: tipos de braços, mão, pernas, voador.
+
+
+------------------------------------------------
+funções do app:
+
+carrinho;
+personalização para cada categoria;
+pagamento;
+entrega;
+visuzlização do andamento;
+
+
