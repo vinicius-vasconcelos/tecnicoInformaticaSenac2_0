@@ -1,0 +1,21 @@
+.statusbar-overlay {
+    background: #000000;
+}
+
+.page-content {
+    margin: 60px auto;
+}
+
+.padding {
+    padding: 10px;
+}
+
+.button2 {
+    width: 100%;
+    height: 30px;
+    border: none;
+    color: #FFF;
+    background-color: #2196f3;
+    font-size: 18px;
+    font-weight: bold;
+}
