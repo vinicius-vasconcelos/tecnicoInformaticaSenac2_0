@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Blank App</title>
+    </head>
+    <body>
+        <button style="width: 100%; height: 45px; border: none;" onclick="app.capturePhoto()">Tirar foto</button>
+
+        <p style="width: 200px; height: 200px; border: 1px dotted #000;"><img id="myImage" style="width: 150px; height: 150px;" src="" alt=""></p>
+
+        <script>
+            const app = {
+                initialize: function() {
+                    document.addEventListener('deviceready', this.onDivecReady.bind(this), false);
+                },
+                onDivecReady: function() {
+                    this.receivedEvent('deviceready');
+                },
+                receivedEvent: function() {
+                    console.log('Recived event' + id);
+                },
+                capturePhoto: function() {
+                    alert('Bateu')
+                    navigator.camera.getPicture(this.onSuccess, this.onFail, {
+                        quality: 60,
+                        destinationType: Camera.DestinationType.DATA_URL,
+                        allowEdit: false,
+                        sourceType: 1,
+                        encodingType: 0,
+                    });
+                },
+                onSuccess: function(imageData) {
+                    var image = document.getElementById('myImage');
+                    image.src = "data:image/jpge;base64," + imageData;
+                    alert('success')
+                },
+                onFail: function(msg) {
+                    alert('Fail' + msg);
+                }
+                
+            }
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
