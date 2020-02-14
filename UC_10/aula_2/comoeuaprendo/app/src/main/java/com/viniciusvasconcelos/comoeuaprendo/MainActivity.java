@@ -31,6 +31,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnIniciarOnClick(View v) {
-        //startActivity(new Intent(this, EstiloVisualActivity.class));
+        startActivity(new Intent(this, MeuEstiloActivity.class));
     }
 }
