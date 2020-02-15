@@ -26,4 +26,9 @@ public class Tipo {
         this.count = count;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return tipo + ": " + count;
+    }
 }
