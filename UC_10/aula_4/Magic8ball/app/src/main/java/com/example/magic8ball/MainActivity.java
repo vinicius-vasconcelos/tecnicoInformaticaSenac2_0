@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
                         btReset.setVisibility(View.VISIBLE);
                         flag = false;
                     }
-
-
                 }
             }
         });
