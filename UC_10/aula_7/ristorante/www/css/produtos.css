@@ -1,0 +1,56 @@
+#footer-entrar {
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 90%;
+    left: 0;
+    z-index: 2;
+    background-color: #ECECEC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-entrar { width: 45%; }
+
+.produtos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 45px;
+}
+
+.produtos-item {
+    width: 100%;
+    padding: 20px;
+    background-color: #393e44;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; 
+    flex-direction: column;
+}
+
+.foto-produto,
+.foto-produto img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.foto-produto {  margin-right: 30px; }
+
+.margin { margin-top: 15px; }
+
+.descricao { font-size: 1.1rem;}
+
+.nome-burger {font-size: 1.3rem; }
