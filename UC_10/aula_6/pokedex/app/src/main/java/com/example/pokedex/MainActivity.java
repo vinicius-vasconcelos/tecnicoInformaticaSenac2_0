@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private void IniciarRecyclerView(){
         this.CriarLista();
     }
+
     private void CriarLista(){
         this.pokemons = new ArrayList<Pokemon>();
         this.pokemons.add(new Pokemon("Abra","Psi",R.drawable.abra));
