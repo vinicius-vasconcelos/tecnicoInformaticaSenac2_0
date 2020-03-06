@@ -1,4 +1,4 @@
-package com.viniciusvasconcelos.pokedex;
+package com.example.pokedex;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.viniciusvasconcelos.pokedex", appContext.getPackageName());
+        assertEquals("com.example.pokedex", appContext.getPackageName());
     }
 }

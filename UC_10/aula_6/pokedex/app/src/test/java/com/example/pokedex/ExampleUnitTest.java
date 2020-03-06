@@ -1,4 +1,4 @@
-package com.viniciusvasconcelos.pokedex;
+package com.example.pokedex;
 
 import org.junit.Test;
 
