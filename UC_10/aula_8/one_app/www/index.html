@@ -18,11 +18,52 @@
 
         </ul>
 
+        <form>
+            <h1>Cadastro de usuário</h1>
+            <input type="text" name="nome" id="nome" placeholder="Nome...">
+            <input type="tel" name="tel" id="tel" placeholder="Telefone...">
+            <button id="btnAdd">Adicionar</button>
+        </form>
+
         <a href="tela2.html">Tela - 2</a>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyB-Wsm6OeRwEjXn8sM91yK0ln-c_XNpwgI",
+                authDomain: "elequipe.firebaseapp.com",
+                databaseURL: "https://elequipe.firebaseio.com",
+                projectId: "elequipe",
+                storageBucket: "elequipe.appspot.com",
+                messagingSenderId: "366233755932",
+                appId: "1:366233755932:web:78ae514f5db647c9169ad9"
+            };
+            firebase.initializeApp(firebaseConfig);
+    
+            var userList = document.getElementById('userList2')
+    
+            firebase.database().ref('users').on('value', function(snapshot){
+                userList.innerHTML = ''
+                snapshot.forEach(item => {
+                    var li = document.createElement('LI')
+                    var texto = document.createTextNode(`${item.val().nome}: ${item.val().telefone}`);
+                    li.appendChild(texto)
+                    userList.appendChild(li)
+                })
+            })
+
+
+            document.getElementById('btnAdd').addEventListener('click', function(params) {
+                firebase.database().ref().child('users').push({
+                    nome: document.getElementById('nome').value,
+                    telefone: document.getElementById('tel').value,
+                })
+            })
+        </script>
     </body>
 
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+   
 
     <style>
         *{
@@ -55,31 +96,36 @@
             padding: 20px;
             margin-bottom: 5px;
         }
+
+        form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            background: #cdcdcd;
+            margin: 10px;
+        }
+
+        form input {
+            width: 90%;
+            height: 3em;
+            border: none;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, .15);
+        }
+
+        button {
+            padding: 10px;
+            background-color: #00AA00;
+            border: none;
+            color: #FFF;
+        }
     </style>
 
-    <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyB-Wsm6OeRwEjXn8sM91yK0ln-c_XNpwgI",
-            authDomain: "elequipe.firebaseapp.com",
-            databaseURL: "https://elequipe.firebaseio.com",
-            projectId: "elequipe",
-            storageBucket: "elequipe.appspot.com",
-            messagingSenderId: "366233755932",
-            appId: "1:366233755932:web:78ae514f5db647c9169ad9"
-        };
-        firebase.initializeApp(firebaseConfig);
-
-        var userList = document.getElementById('userList2')
-
-        firebase.database().ref('users').on('value', function(snapshot){
-            userList.innerHTML = ''
-            snapshot.forEach(item => {
-                var li = document.createElement('LI')
-                var texto = document.createTextNode(`${item.val().nome}: ${item.val().telefone}`);
-                li.appendChild(texto)
-                userList.appendChild(li)
-            })
-        })
-    </script>
+    
 
 </html>

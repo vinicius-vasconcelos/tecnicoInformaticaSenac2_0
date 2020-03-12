@@ -9,14 +9,84 @@
         <h1>Acessando Dados 2</h1>
 
         <ul id="userList2">
-
         </ul>
 
-        <a href="index.html">Tela - 1</a>
-    </body>
+        <form>
+            <h1>Cadastro de Lugares</h1>
+            <input type="text" name="nome" id="nome" placeholder="Nome...">
+            <input type="text" name="latitude" id="latitude" placeholder="Latitude...">
+            <input type="text" name="longitude" id="longitude" placeholder="Longitude...">
+            <input type="text" name="uf" id="uf" placeholder="UF...">
+            <button id="btnAdd">Adicionar</button>
+        </form>
 
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+        <a href="index.html">Tela - 1</a>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyCwuao6S37RSOTVfrzvc0ncxeo724RYrXc",
+                authDomain: "projectone-633a9.firebaseapp.com",
+                databaseURL: "https://projectone-633a9.firebaseio.com",
+                projectId: "projectone-633a9",
+                storageBucket: "projectone-633a9.appspot.com",
+                messagingSenderId: "192678070566",
+                appId: "1:192678070566:web:882d7e0adbc2cabe7a19e7"
+            };
+    
+            firebase.initializeApp(firebaseConfig);
+    
+            var userList = document.getElementById('userList2')
+            firebase.database().ref('lugares').on('value', function(snapshot){
+                userList.innerHTML = '';
+                snapshot.forEach(function(item) {
+                    var div = document.createElement('div')
+                   // var x = document.createElement('span')
+                    var button = document.createElement('button')
+                        button.setAttribute('onclick', `verMapa('${JSON.stringify(item.val())}')`)
+                        button.appendChild(document.createTextNode('Ver Mapa'))
+
+
+
+                    var p = document.createElement('P')
+                    p.appendChild(document.createTextNode(`UF: ${item.val().uf}`))
+    
+                    var p2 = document.createElement('P')
+                    p2.appendChild(document.createTextNode(`Cidade: ${item.val().nome}`))
+    
+                    var p3 = document.createElement('P')
+                    p3.appendChild(document.createTextNode(`Latitude: ${item.val().latitude}`))
+    
+                    var p4 = document.createElement('P')
+                    p4.appendChild(document.createTextNode(`Longitude: ${item.val().longitude}`))
+    
+                    //div.appendChild(x.appendChild(document.createTextNode('X')))
+                    div.appendChild(p)
+                    div.appendChild(p2)
+                    div.appendChild(p3)
+                    div.appendChild(p4)
+                    div.appendChild(button)
+    
+                    userList.appendChild(div)
+                })
+            })
+
+            document.getElementById('btnAdd').addEventListener('click', function(params) {
+                firebase.database().ref().child('lugares').push({
+                    nome: document.getElementById('nome').value,
+                    latitude: document.getElementById('latitude').value,
+                    longitude: document.getElementById('longitude').value,
+                    uf: document.getElementById('uf').value,
+                })
+            })
+
+            function verMapa(obj) {
+                console.log(JSON.parse(obj))
+            }
+        </script>
+
+    </body> 
 
     <style>
         *{
@@ -54,6 +124,12 @@
             box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, .15);
         }
 
+        span {
+            width: 100%;
+            text-align: right;
+            border: 10px solid #000;
+        }
+
         p {
             border: 1px solid #E2E2E2;
             padding: 5px;
@@ -65,46 +141,34 @@
            background-color: rgba(0, 0, 0, .5);
            color: #FFF;
         }
+
+        form {
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            background: #cdcdcd;
+            margin: 10px;
+        }
+
+        form input {
+            width: 100%;
+            height: 3em;
+            border: none;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, .15);
+        }
+
+        button {
+            padding: 10px;
+            background-color: #00AA00;
+            border: none;
+            color: #FFF;
+            cursor: pointer;
+        }
     </style>
-
-    <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyCwuao6S37RSOTVfrzvc0ncxeo724RYrXc",
-            authDomain: "projectone-633a9.firebaseapp.com",
-            databaseURL: "https://projectone-633a9.firebaseio.com",
-            projectId: "projectone-633a9",
-            storageBucket: "projectone-633a9.appspot.com",
-            messagingSenderId: "192678070566",
-            appId: "1:192678070566:web:882d7e0adbc2cabe7a19e7"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-
-        var userList = document.getElementById('userList2')
-        firebase.database().ref('lugares').on('value', function(snapshot){
-            userList.innerHTML = '';
-            snapshot.forEach(function(item) {
-                var div = document.createElement('div')
-
-                var p = document.createElement('P')
-                p.appendChild(document.createTextNode(`UF: ${item.val().uf}`))
-
-                var p2 = document.createElement('P')
-                p2.appendChild(document.createTextNode(`Cidade: ${item.val().nome}`))
-
-                var p3 = document.createElement('P')
-                p3.appendChild(document.createTextNode(`Latitude: ${item.val().latitude}`))
-
-                var p4 = document.createElement('P')
-                p4.appendChild(document.createTextNode(`Longitude: ${item.val().longitude}`))
-
-                div.appendChild(p)
-                div.appendChild(p2)
-                div.appendChild(p3)
-                div.appendChild(p4)
-
-                userList.appendChild(div)
-            })
-        })
-    </script>
 </html>
