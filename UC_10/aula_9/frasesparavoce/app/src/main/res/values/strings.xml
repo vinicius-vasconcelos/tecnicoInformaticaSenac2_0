@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FrasesParaVoce</string>
+
+    <string-array name="categoria_dados">
+        <item>Frases Românticas</item>
+        <item>Frases Engraçadas</item>
+        <item>Frases de Religiosas</item>
+        <item>Frases Motivacionais</item>
+        <item>Frases Diversas</item>
+    </string-array>
+</resources>
