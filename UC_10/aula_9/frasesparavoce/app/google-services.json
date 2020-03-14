@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "404519292075",
+    "firebase_url": "https://frasesparavoce-9fb71.firebaseio.com",
+    "project_id": "frasesparavoce-9fb71",
+    "storage_bucket": "frasesparavoce-9fb71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404519292075:android:5235da28c4bbbac707bbee",
+        "android_client_info": {
+          "package_name": "com.viniciusvasconcelos.frasesparavoce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519292075-2ekutsukmrrmu3lgfc1oo0a7cqdnp7va.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.viniciusvasconcelos.frasesparavoce",
+            "certificate_hash": "5c53211f1b2bab391e6485c8e5998169addcad80"
+          }
+        },
+        {
+          "client_id": "404519292075-kmjq55q96a1jlu8nvnmfkofrscar1v6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXdVN_lZIyAjeDoxBrxdulXEIgdIVuDtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519292075-kmjq55q96a1jlu8nvnmfkofrscar1v6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

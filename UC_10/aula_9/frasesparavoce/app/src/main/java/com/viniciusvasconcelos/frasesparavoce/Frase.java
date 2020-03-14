@@ -1,4 +1,8 @@
-public class Frase {
+package com.viniciusvasconcelos.frasesparavoce;
+
+import java.io.Serializable;
+
+public class Frase implements Serializable {
     private String id;
     private String texto;
     private String autor;
@@ -16,6 +20,15 @@ public class Frase {
         this.texto = texto;
         this.autor = autor;
         this.categoria = categoria;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Frase setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getTexto() {

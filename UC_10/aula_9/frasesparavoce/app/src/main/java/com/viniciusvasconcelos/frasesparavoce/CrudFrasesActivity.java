@@ -11,15 +11,36 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 public class CrudFrasesActivity extends AppCompatActivity {
     EditText etTexto;
     EditText etAutor;
     Spinner spCategoria;
 
+    //firebase
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+
+    private void iniciarBanco() {
+        FirebaseApp.initializeApp(CrudFrasesActivity.this);
+        database = FirebaseDatabase.getInstance();
+        database.setPersistenceEnabled(true);
+
+        myRef = database.getReference();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crud_frases);
+
+        this.iniciarBanco();
+        iniciarViews();
     }
 
     @Override
@@ -32,8 +53,12 @@ public class CrudFrasesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.menu_new)
-            Toast.makeText(this, "Clicou no NEW", Toast.LENGTH_SHORT).show();
+
+        if(id == R.id.menu_new) {
+            Frase frase = new Frase(UUID.randomUUID().toString(), etTexto.getText().toString(), etAutor.getText().toString(), spCategoria.getSelectedItem().toString());
+
+            myRef.child("frases").child(frase.getId()).setValue(frase);
+        }
         if(id == R.id.menu_delete)
             Toast.makeText(this, "Clicou no DELETE", Toast.LENGTH_SHORT).show();
         if(id == R.id.menu_search)
