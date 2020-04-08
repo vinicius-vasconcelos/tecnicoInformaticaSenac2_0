@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Super B-King - Cadastrar</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Odibee+Sans|Trade+Winds&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/geral.css">
+        <link rel="stylesheet" href="css/login.css">
+    </head>
+    <body>
+        <div id="main">
+            <h1 class="text-rock">Super B-King</h1>
+
+            <form name="form-cadastro" id="form-cadastro"  method="post" enctype="multipart/form-data">
+                <h3 class="text-rock">Cadastro de Lanche</h3>
+
+                <input type="hidden" name="codigo" id="codigo" placeholder="Código">
+                <input type="text" name="nome" id="nome" placeholder="Nome do produto...">
+                <textarea name="descricao" id="descricao" placeholder="breve descrição do produto..."></textarea>
+                <input type="text" name="preco" id="preco" placeholder="R$ 00,00">
+
+                
+                <div class="arquivos">
+                    <p class="text-main">Fotos</p>
+                    <div class="inputs-file">
+                        <input type="file" name="foto1" id="foto1" class="custom-file-input" onchange="readURL(this)">
+                        <input type="file" name="foto2" id="foto2" class="custom-file-input" onchange="readURL(this)">
+                        <input type="file" name="foto3" id="foto3" class="custom-file-input" onchange="readURL(this)">
+                    </div>
+                     <div class="fotos-carregadas">
+                        <div id="foto1-carregada" class="foto"></div>
+                        <div id="foto2-carregada" class="foto"></div>
+                        <div id="foto3-carregada" class="foto"></div>
+                    </div>
+                    <div class="status">
+                        <small class="porcentagem" data-name="foto1">0%</small>
+                        <small class="porcentagem" data-name="foto2">0%</small>
+                        <small class="porcentagem" data-name="foto3">0%</small>
+                    </div>
+                    
+                </div>
+
+                <button class="btn-primary" type="submit">Salvar</button>
+                <button class="btn-danger" onclick="window.location.href='index.html'">Cancelar</button>
+            </form>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+        <script src="./js/conectFirebase.js"></script>
+        <script src="./js/cadastrarProduto.js"></script>
+    </body>
+</html>

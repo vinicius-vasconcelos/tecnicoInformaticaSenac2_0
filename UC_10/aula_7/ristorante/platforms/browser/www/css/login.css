@@ -9,7 +9,7 @@ form {
     border-radius: 5px;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
     height: 3em;
     border: none;
@@ -20,10 +20,69 @@ form input {
     color: #ECECEC;
 }
 
+textarea {
+    height: 5em !important;
+}
+
 form input:hover,
 form input:focus {  box-shadow: 3px 3px 3px 0px rgba(255, 255, 255, .1); outline: none;}
 
 form button {
     margin-top: 15px;
     height: 3em;
+}
+
+
+.arquivos {
+    width: 100%;
+    background-color: #2B3137;
+    margin-top: 5px;
+    border-radius: 5px;
+    padding: 10px;
+
+  
+}
+
+.inputs-file, .fotos-carregadas, .status {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.custom-file-input {
+    background-color: #28a745;
+    width: 85px;
+    height: 30px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: "+";
+    color: #FFF;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    margin-top: -8px;
+    cursor: pointer;
+}
+
+.foto, .img-foto {
+    width: 85px;
+    height: 85px; 
+    border-radius: 5px;
+}
+
+.foto {
+    border: 1px dotted #8C8C8C;
+    margin-top: 5px;
+   
+}
+
+.porcentagem {
+    margin-top: 5px;
 }

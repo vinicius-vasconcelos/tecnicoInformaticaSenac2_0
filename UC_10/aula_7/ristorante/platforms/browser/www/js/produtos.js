@@ -1,4 +1,4 @@
-const objProdutos = [
+/*const objProdutos = [
     {
         id: 1,
         nome: 'Super Monstrão Burger',
@@ -69,27 +69,31 @@ const objProdutos = [
         valor: 'R$ 40,00',
         url: ['doubleBurguer', 'default', 'default'],
     },
-]
+]*/
+
+firebase.database().ref('produtos').on('value', function(snapshot){
+    preencherProdutos(snapshot)
+})
 
 function verMaisProduto(idProd) {
-    document.querySelector('.produtos').innerHTML = ''
-    document.getElementById('titulo').style.display = 'none'
-    let objSelected = objProdutos[idProd-1];
-    let str = ''
+    firebase.database().ref('produtos').child(`/${idProd}`).on('value', productResult => {
+        document.querySelector('.produtos').innerHTML = ''
+        document.getElementById('titulo').style.display = 'none'
+        let str = ''
 
         str += `
-            <h3 class="text-rock nome-burger h3-title">${objSelected.nome}<h3>
+            <h3 class="text-rock nome-burger h3-title">${productResult.val().nome}<h3>
             <div class="produto-item col-direction">
                 <div class="foto-produtos">
-                    <span class="foto-produtos foto-produtos-grid1 "><img src="./img/${objSelected.url[0]}.jpg" alt=""></span>
+                    <span class="foto-produtos foto-produtos-grid1 "><img src="${productResult.val().fotos[0]}" alt="Foto1"></span>
                     <span class="foto-produtos foto-produtos-grid2">
-                        <img src="./img/${objSelected.url[1]}.jpg" alt="">
-                        <img src="./img/${objSelected.url[2]}.jpg" alt="">
+                        <img src="${productResult.val().fotos[1]}" alt="Foto2">
+                        <img src="${productResult.val().fotos[2]}" alt="Foto3">
                     </span>
                 </div>
                 <div class="info">
-                    <p class="margin text-main descricao text-plus">${objSelected.descricao}</p>
-                    <p class="margin text-main text-plus">${objSelected.valor}</p>
+                    <p class="margin text-main descricao text-plus">${productResult.val().descricao}</p>
+                    <p class="margin text-main text-plus">${productResult.val().valor}</p>
                     <div class="options">
                         <div class="plusAndMinus">
                             <button class="btn-danger">-</button>
@@ -98,14 +102,15 @@ function verMaisProduto(idProd) {
                         </div>
 
                         <div class="buttons">
-                            <button class="text-rock" onclick="finalizarPedido('${objSelected.id}')">Finalizar</button>
+                            <button class="text-rock" onclick="finalizarPedido('${idProd}')">Finalizar</button>
                             <button class="text-rock btn-danger" onclick="window.location.href='index.html'">Cancelar</button>
                         </div>
                     </div>
                 </div>
             </div>
         `
-    document.querySelector('.produtos').innerHTML = str;
+        document.querySelector('.produtos').innerHTML = str; 
+    })
 }
 
 function finalizarPedido(idProd) {
@@ -137,22 +142,20 @@ function finalizarPedido(idProd) {
     }, 3000)
 }
 
-function preencherProdutos() {
+function preencherProdutos(produtos) {
     let str = ''
-    objProdutos.map( obj => {
+    produtos.forEach(function(obj) {
         str += `
             <div class="produtos-item">
-                <div class="foto-produto"><img src="./img/${obj.url[0]}.jpg" alt=""></div>
+            <div class="foto-produto"><img src="${obj.val().fotos[0]}" alt="${obj.val().nome}"></div>
                 <div class="info">
-                    <h3 class="text-rock nome-burger">${obj.nome}</h3>
-                    <p class="margin text-main descricao">${obj.descricao}</p>
-                    <p class="margin text-main">${obj.valor}</p>
-                    <button onclick="verMaisProduto('${obj.id}')" class="ver-mais margin text-rock" id="${obj.id}">Pedir</button>
+                    <h3 class="text-rock nome-burger">${obj.val().nome}</h3>
+                    <p class="margin text-main descricao">${obj.val().descricao}</p>
+                    <p class="margin text-main">${obj.val().valor}</p>
+                    <button onclick="verMaisProduto('${obj.key}')" class="ver-mais margin text-rock" id="${obj.key}">Pedir</button>
                 </div>
             </div>
         `
     })
     document.querySelector('.produtos').innerHTML = str;
 }
-
-preencherProdutos()

@@ -93,12 +93,12 @@ function verMaisProduto(idProd) {
                 </div>
                 <div class="info">
                     <p class="margin text-main descricao text-plus">${productResult.val().descricao}</p>
-                    <p class="margin text-main text-plus">${productResult.val().valor}</p>
+                    <p class="margin text-main text-plus">R$ <span id="valorUni">${productResult.val().valor}</span> x <span id="quant">1</span> = <span id="total">${productResult.val().valor}</span></p>
                     <div class="options">
                         <div class="plusAndMinus">
-                            <button class="btn-danger">-</button>
-                            <input type="number">
-                            <button class="btn-primary">+</button>
+                            <button type="button" class="btn-danger" onclick="minusProduct()">-</button>
+                            <input type="text" value="1" id="qtde" name="qtde">
+                            <button type="button" class="btn-primary" onclick="addProduct()">+</button>
                         </div>
 
                         <div class="buttons">
@@ -151,11 +151,33 @@ function preencherProdutos(produtos) {
                 <div class="info">
                     <h3 class="text-rock nome-burger">${obj.val().nome}</h3>
                     <p class="margin text-main descricao">${obj.val().descricao}</p>
-                    <p class="margin text-main">${obj.val().valor}</p>
+                    <p class="margin text-main">R$ ${obj.val().valor}</p>
                     <button onclick="verMaisProduto('${obj.key}')" class="ver-mais margin text-rock" id="${obj.key}">Pedir</button>
                 </div>
             </div>
         `
     })
     document.querySelector('.produtos').innerHTML = str;
+}
+
+function addProduct() {
+   let qtde = parseInt(document.getElementById('qtde').value)
+   let uni = parseFloat(document.getElementById('valorUni').innerText).toFixed(2)
+
+    qtde = qtde + 1  
+    document.getElementById('qtde').value = qtde
+    document.getElementById('quant').innerText = qtde
+    document.getElementById('total').innerText = (uni * qtde).toFixed(2)
+}
+
+function minusProduct() {
+    let qtde = parseInt(document.getElementById('qtde').value)
+    let uni = parseFloat(document.getElementById('valorUni').innerText).toFixed(2)
+
+    qtde = qtde - 1 
+    if(qtde >= 1) {
+        document.getElementById('qtde').value = qtde
+        document.getElementById('quant').innerText = qtde
+        document.getElementById('total').innerText = (uni * qtde).toFixed(2)
+    }
 }

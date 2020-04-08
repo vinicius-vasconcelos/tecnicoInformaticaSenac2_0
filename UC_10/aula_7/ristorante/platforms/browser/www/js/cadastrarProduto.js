@@ -18,7 +18,7 @@ function __uploadFoto(filePhoto, newProduct) {
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             photoCount--
             newProduct.fotos.push(downloadURL)
-            if(photoCount === 0)
+            if(photoCount == 0)
                 saveProduct(newProduct) 
         });
     })
@@ -26,7 +26,7 @@ function __uploadFoto(filePhoto, newProduct) {
 
 function saveProduct(product) {
     firebase.database().ref().child('produtos').push(product)
-    setTimeout(() => window.location.href = 'index.html' , 1000);
+   setTimeout(() => window.location.href = 'index.html' , 1000);
 }
 
 document.getElementById('form-cadastro').addEventListener('submit', async data => {
