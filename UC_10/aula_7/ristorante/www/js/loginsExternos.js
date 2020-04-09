@@ -24,8 +24,10 @@ document.getElementById('loginGoogle').addEventListener('click', e => {
 document.getElementById('loginFacebook').addEventListener('click', e => {
     e.preventDefault()
 
-    let provider = new firebase.auth.GoogleAuthProvider()
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly')
+    let provider = new firebase.auth.FacebookAuthProvider()
+        provider.addScope('user_birthday')
+        provider.addScope('email')
+       // provider.addScope('name')
 
     firebase.auth().signInWithPopup(provider)
         .then(result => {
@@ -34,7 +36,9 @@ document.getElementById('loginFacebook').addEventListener('click', e => {
             console.log(result.user)
             console.log(result.user.displayName)
             console.log(result.user.email)
-            console.log(result.user.displayName)
+            console.log(result.user)
+            
+            //window.location.href = `areaCliente.html?user=${result.user.displayName}&email=${result.user.email}`
         })
         .catch(error => {
             console.log('reouuuuuuuuuuuuuuuuuuu')
