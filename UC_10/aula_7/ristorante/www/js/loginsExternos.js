@@ -1,50 +1,32 @@
+function singIn(provider, txt) {
+    provider.addScope(txt)
+
+    firebase.auth().signInWithPopup(provider)
+        .then(result => window.location.href = `areaCliente.html?nome=${result.user.displayName}&foto=${result.user.photoURL}`)
+        .catch(error => alert('Falha ao tentar logar pelo'))
+}
+
 document.getElementById('loginGoogle').addEventListener('click', e => {
     e.preventDefault()
 
     let provider = new firebase.auth.GoogleAuthProvider()
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly')
 
-    firebase.auth().signInWithPopup(provider)
-        .then(result => {
-            console.log('blz mlkoti bora la')
-            console.log(result.credential.accessToken)
-            console.log(result.user)
+    singIn(provider, 'https://www.googleapis.com/auth/contacts.readonly')
 
-            window.location.href = `areaCliente.html?user=${result.user.displayName}&email=${result.user.email}`
-        })
-        .catch(error => {
-            console.log('reouuuuuuuuuuuuuuuuuuu')
-            console.log(error.code)
-            console.log(error.message)
-            console.log(error.email)
-            console.log(error.credential)
-        })
 })
 
 document.getElementById('loginFacebook').addEventListener('click', e => {
     e.preventDefault()
 
     let provider = new firebase.auth.FacebookAuthProvider()
-        provider.addScope('user_birthday')
-        provider.addScope('email')
-       // provider.addScope('name')
 
-    firebase.auth().signInWithPopup(provider)
-        .then(result => {
-            console.log('blz mlkoti bora la')
-            console.log(result.credential.accessToken)
-            console.log(result.user)
-            console.log(result.user.displayName)
-            console.log(result.user.email)
-            console.log(result.user)
-            
-            //window.location.href = `areaCliente.html?user=${result.user.displayName}&email=${result.user.email}`
-        })
-        .catch(error => {
-            console.log('reouuuuuuuuuuuuuuuuuuu')
-            console.log(error.code)
-            console.log(error.message)
-            console.log(error.email)
-            console.log(error.credential)
-        })
+    singIn(provider, 'user_birthday')
+})
+
+document.getElementById('loginGitHub').addEventListener('click', e => {
+    e.preventDefault()
+
+    let provider = new firebase.auth.GithubAuthProvider()
+
+    singIn(provider, 'rep')
 })

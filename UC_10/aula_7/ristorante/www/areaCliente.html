@@ -9,10 +9,18 @@
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
-    <body>
+    <body id="main">
         <h1 class="text-rock" id="titulo">Bem Vindo</h1>
-        <p class="text-main"></p>
+        <div class="div-photo"><img src="" alt="" id="foto" class="div-photo-img"></div>
+        <h3 id="nome" class="text-rock"></h3>
+
+        <button class="text-rock btn-danger" onclick="logout()">Sair</button>
     </body>
 
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
+    <script src="./js/conectFirebase.js"></script>
     <script src="./js/areaCliente.js"></script>
 </html>

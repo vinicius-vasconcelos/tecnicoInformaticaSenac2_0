@@ -111,3 +111,10 @@ i.fa-github-square {
 .porcentagem {
     margin-top: 5px;
 }
+
+.div-photo,
+.div-photo-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
